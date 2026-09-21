@@ -17,7 +17,7 @@ public class Engine {
     private static final EscapeCSV escapeCSV = new EscapeCSV();
     private static final WriteCSV writeCSV = new WriteCSV();
 
-    public Engine(Config config) {
+    public Engine() {
     }
 
     public void run() {
@@ -39,31 +39,20 @@ public class Engine {
 
             List<String> csvLines = new ArrayList<>();
 
-            // header required by official Kaspersky documentation
-            // https://support.kaspersky.com.br/kpm-for-windows/26.0/130515
             csvLines.add("url,username,password,name,extra");
-
-
-            int dummyUrlCounter = 1;
 
             for (int i = 1; i < keepassData.size(); i++) {
                 List<String> row = keepassData.get(i);
 
-                // Indices based on the KeePass structure:
-                // 0:"Group", 1:"Title", 2:"Username", 3:"Password", 4:"URL", 5:"Notes"
                 String title = getFieldSafely.handler(row, 1);
                 String login = getFieldSafely.handler(row, 2);
                 String password = getFieldSafely.handler(row, 3);
                 String url = getFieldSafely.handler(row, 4);
                 String notes = getFieldSafely.handler(row, 5);
 
-                // Sanitize URLs (Required for Kaspersky)
-                // URL is a mandatory data
-                // if any entry has no URL will be ignored
-                // this is a counter to no repeat same entry, or it will be stack logins on same URL
                 if (url == null || url.trim().isEmpty()) {
-                    url = "https://dummy-site-" + dummyUrlCounter + ".com";
-                    dummyUrlCounter++;
+                    var dummyUrl = title.replaceAll("\\s+", "");
+                    url = "https://" + dummyUrl.toLowerCase() + ".com";
                 } else if (!url.startsWith("http://") && !url.startsWith("https://")) {
                     url = "https://" + url;
                 }
