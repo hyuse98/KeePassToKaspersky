@@ -1,6 +1,19 @@
+<p align="right">
+  <a href="./README.md">English</a> |
+  <a href="./README.pt-br.md">Português (Brasil)</a>
+</p>
+
 # KeePassToKaspersky
 
 1:1 CSV parser from KeePassXC to Kaspersky Password Manager
+
+### Content
+* [The Problem](#the-problem)
+* [The Solution](#the-solution)
+* [How to Use](#how-to-use)
+    * [Requirements](#requirements)
+    * [Instructions](#instructions)
+    * [Build](#build)
 
 ## The Problem
 
@@ -74,3 +87,11 @@ Open the command prompt or your preferred terminal in the folder and run the JAR
 If everything goes smoothly, the output will be a new file named ````kaspersky_ready.csv````
 
 For your security, it is highly recommended to permanently delete both CSV files after use!!!
+
+### Build
+
+if u want build it u self use the follow commando or use gradle tools on u IDE
+
+````bash
+ ./gradlew build
+````

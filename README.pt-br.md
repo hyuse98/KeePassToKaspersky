@@ -1,6 +1,19 @@
+<p align="right">
+    <a href="./README.pt-br.md">Português (Brasil)</a> |
+    <a href="./README.md">English</a>
+</p>
+
 # KeePassToKaspersky
 
 Parser CSV 1:1 do software KeePassXC para Kaspersky Password Manager
+
+### Conteudo
+ * [O Problema](#o-problema)
+ * [A Solução](#a-solução)
+ * [Como Usar](#como-usar)
+   * [Requisitos](#requisitos)
+   * [Instruções](#instruções)
+   * [Build](#build)
 
 ## O Problema
 
@@ -70,3 +83,11 @@ Abre o cmd ou terminal da sua preferência na pasta e execute o jar com a linha 
 Se tudo ocorrer sem problemas ira ter como saida um novo arquivo chamado ````kaspersky_ready.csv````
 
 Para sua segurança após o uso é altamente recomendado apagar permanentemente ambos arquivos CSV!!!
+
+### Build
+
+Se você quiser fazer a build por sua conta use o comando abaixo ou usar ferramentas gradle na sua IDE
+
+````bash
+ ./gradlew build
+````
